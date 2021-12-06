@@ -7,7 +7,8 @@ enum layers {
     _NUM,
     _RGB,
     _FN,
-    _MOVE
+    _MOVE,
+    _SYMBOLS
 };
 
 
@@ -18,11 +19,7 @@ enum layers {
 #define RGB      MO(_RGB)
 #define FN       MO(_FN)
 #define MVE      MO(_MOVE)
-
-#define CTL_ESC  MT(MOD_LCTL, KC_ESC)
-#define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
-#define CTL_MINS MT(MOD_RCTL, KC_MINUS)
-#define ALT_ENT  MT(MOD_LALT, KC_ENT)
+#define SYM      MO(_SYMBOLS)
 
 // home raw mods
 #define MT_A   LCTL_T(KC_A)
@@ -36,11 +33,7 @@ enum layers {
 #define MT_O   RCTL_T(KC_O)
 
 
-// Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
-// The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
-// produces the key `tap` when tapped (i.e. pressed and released).
 
-// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Base Layer: Colemak DH
@@ -48,19 +41,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |        |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        | ⎈/A  | ⇧/R  | ⎇/S  | ◆/T  |   G  |                              |   M  | ◆/N  | ⎇/E  | ⇧/I  | ⎈/O  |  '  "  |
+ * |   Esc  | ⎈/A  | ⇧/R  | ⎇/S  | ◆/T  |   G  |                              |   M  | ◆/N  | ⎇/E  | ⇧/I  | ⎈/O  |  '  "  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |   Z  |   X  |   C  |   D  |   V  |      | RGB  |  |  FN  |      |   K  |   H  | ,  < | . >  | /  ? |        |
+ * |        |   Z  |   X  |   C  |   D  |   V  |      | RGB  |  |  FN  |      |   K  |   H  | ,  < | . >  | /  ? |  Print |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      | NUM  | MVE  |  |  Del | Space| Back |      |      |
+ *                        |      |  Tab |  SYM | NUM  | MVE  |  |  Del | Space| Back |      |      |
  *                        |      |      |      |      |      |  |      |      | Space|      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK_DH] = LAYOUT(
      _______ , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                        KC_J  , KC_L ,  KC_U ,   KC_Y ,KC_SCLN, _______,
-     _______ , MT_A ,  MT_R   ,  MT_S  ,   MT_T ,   KC_G ,                                        KC_M  , MT_N ,  MT_E ,   MT_I ,  MT_O , KC_QUOT,
-     _______ , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , _______,  RGB  ,       FN   , _______, KC_K  , KC_H ,KC_COMM, KC_DOT ,KC_SLSH, _______,
-                                _______, _______, _______, NUM    ,  MVE  ,     KC_DEL , KC_SPC ,KC_BSPC, _______, _______
+     KC_ESC  , MT_A ,  MT_R   ,  MT_S  ,   MT_T ,   KC_G ,                                        KC_M  , MT_N ,  MT_E ,   MT_I ,  MT_O , KC_QUOT,
+     _______ , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , _______,  RGB  ,       FN   , _______, KC_K  , KC_H ,KC_COMM, KC_DOT ,KC_SLSH, KC_PSCR,
+                                _______, KC_TAB ,   SYM  , NUM    ,  MVE  ,     KC_DEL , KC_SPC ,KC_BSPC, _______, _______
     ),
 
  /*
@@ -145,6 +138,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
      ),
+
+// /* Symbols layer
+//  *
+//  * ,-------------------------------------------.                              ,-------------------------------------------.
+//  * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
+//  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+//  * |        |   !  |   @  |  #   |  $   |   %  |                              |      |   ^  |   &  |   *  |   |  |        |
+//  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+//  * |        |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
+//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+//  *                        |      |      |      |      |      |  |      |      |      |      |      |
+//  *                        |      |      |      |      |      |  |      |      |      |      |      |
+//  *                        `----------------------------------'  `----------------------------------'
+//  */
+     [_SYMBOLS] = LAYOUT(
+       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
+       _______, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC,                                     _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, _______,
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+     ),
+
 
 // /*
 //  * Layer template
