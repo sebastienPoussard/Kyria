@@ -4,7 +4,8 @@
 
 enum layers {
     _COLEMAK_DH = 0,
-    _NUM
+    _NUM,
+    _RGB
 };
 
 
@@ -12,11 +13,23 @@ enum layers {
 #define COLEMAK  DF(_COLEMAK_DH)
 
 #define NUM      MO(_NUM)
+#define RGB      MO(_RGB)
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
 #define CTL_MINS MT(MOD_RCTL, KC_MINUS)
 #define ALT_ENT  MT(MOD_LALT, KC_ENT)
+
+// home raw mods
+#define MT_A   LCTL_T(KC_A)
+#define MT_R   LSFT_T(KC_R)
+#define MT_S   LALT_T(KC_S)
+#define MT_T   LGUI_T(KC_T)
+
+#define MT_N   RGUI_T(KC_N)
+#define MT_E   RALT_T(KC_E)
+#define MT_I   RSFT_T(KC_I)
+#define MT_O   RCTL_T(KC_O)
 
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
@@ -29,25 +42,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: Colemak DH
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |  Bksp  |
+ * |        |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |Ctrl/Esc|   A  |   R  |   S  |   T  |   G  |                              |   M  |   N  |   E  |   I  |   O  |  '  "  |
+ * |        | ⎈/A  | ⇧/R  | ⎇/S  | ◆/T  |   G  |                              |   M  | ◆/N  | ⎇/E  | ⇧/I  | ⎈/O  |  '  "  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |   Z  |   X  |   C  |   D  |   V  | [ {  |CapsLk|  |      |  ] } |   K  |   H  | ,  < | . >  | /  ? |        |
+ * |        |   Z  |   X  |   C  |   D  |   V  |      | RGB  |  |      |      |   K  |   H  | ,  < | . >  | /  ? |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      | LGUI | LAlt/| NUM  |      |  |      | Space| AltGr| RGUI | Menu |
- *                        |      |      | Enter|      |      |  |      |      |      |      |      |
+ *                        |      |      |      | NUM  |      |  |  Del | Space| Bspc |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK_DH] = LAYOUT(
-     KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                        KC_J,   KC_L ,  KC_U ,   KC_Y ,KC_SCLN, KC_BSPC,
-     CTL_ESC , KC_A ,  KC_R   ,  KC_S  ,   KC_T ,   KC_G ,                                        KC_M,   KC_N ,  KC_E ,   KC_I ,  KC_O , KC_QUOT,
-     _______ , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , KC_LBRC,KC_CAPS,     _______, KC_RBRC, KC_K,   KC_H ,KC_COMM, KC_DOT ,KC_SLSH, _______,
-                                _______, KC_LGUI, ALT_ENT, NUM    ,_______,     _______, KC_SPC ,KC_RALT, KC_RGUI, KC_APP
+     _______ , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                        KC_J  , KC_L ,  KC_U ,   KC_Y ,KC_SCLN, _______,
+     _______ , MT_A ,  MT_R   ,  MT_S  ,   MT_T ,   KC_G ,                                        KC_M  , MT_N ,  MT_E ,   MT_I ,  MT_O , KC_QUOT,
+     _______ , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , _______,  RGB  ,     _______, _______, KC_K  , KC_H ,KC_COMM, KC_DOT ,KC_SLSH, _______,
+                                _______, _______, _______, NUM    ,_______,     KC_DEL , KC_SPC ,KC_BSPC, _______, _______
     ),
 
  /*
-  * Layer template
+  * Numbers and brackets
   *
   * ,-------------------------------------------.                              ,-------------------------------------------.
   * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
@@ -62,11 +75,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   */
      [_NUM] = LAYOUT(
        _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
-       _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                     KC_6   ,  KC_7  ,  KC_8  ,  KC_9  , KC_0   , _______,
+       _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                      KC_6  ,  KC_7  ,  KC_8  ,  KC_9  , KC_0   , _______,
        _______, _______, KC_LPRN, KC_LBRC, KC_LCBR, _______, _______, _______, _______, _______, _______, KC_RCBR, KC_RBRC, KC_RPRN, _______, _______,
                                   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
      ),
 
+
+// /*  RGB controls
+//  *
+//  * ,-------------------------------------------.                              ,-------------------------------------------.
+//  * |        |      |      |      |      |      |                              |ON/OFF| MOD+ | MOD- |      |      |        |
+//  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+//  * |        |      |      |      |      |      |                              |      |Color+|Color-|Satur+|Satur-|        |
+//  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+//  * |        |      |      |      |      |      |      |      |  |      |      |      |Inten+|Inten-|      |      |        |
+//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+//  *                        |      |      |      |      |      |  |      |      |      |      |      |
+//  *                        |      |      |      |      |      |  |      |      |      |      |      |
+//  *                        `----------------------------------'  `----------------------------------'
+//  */
+     [_RGB] = LAYOUT(
+       _______, _______, _______, _______, _______, _______,                                     RGB_TOG, RGB_MOD,RGB_RMOD, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______,                                     _______, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, _______,
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_VAI, RGB_VAD, _______, _______, _______,
+                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+     ),
 
 // /*
 //  * Layer template
