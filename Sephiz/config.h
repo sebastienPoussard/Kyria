@@ -24,8 +24,13 @@
 #    define RGBLIGHT_LIMIT_VAL 150
 #endif
 
-// Lets you roll mod-tap keys
+// Prevent normal rollover on alphas from accidentally triggering mods.  mod down -> a down -> mod up -> mod up does not trigger mod
 #define IGNORE_MOD_TAP_INTERRUPT
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define TAPPING_FORCE_HOLD
+// bypass taaping term when nested keys are pressed  mod down -> a down -> a up -> mod up
+#define PERMISSIVE_HOLD
+
 
 // If you are using an Elite C rev3 on the slave side, uncomment the lines below:
 // #define SPLIT_USB_DETECT
@@ -34,3 +39,4 @@
 
 // TAPMOD
 #define TAPPING_TERM 150
+
