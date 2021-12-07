@@ -39,4 +39,6 @@
 
 // TAPMOD
 #define TAPPING_TERM 150
-
+// Combos
+#define COMBO_VARIABLE_LEN 
+#define COMBO_TERM 30

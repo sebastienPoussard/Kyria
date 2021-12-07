@@ -2,6 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
+
 enum layers {
     _COLEMAK_DH = 0,
     _NUM,
@@ -32,8 +33,10 @@ enum layers {
 #define MT_I   RSFT_T(KC_I)
 #define MT_O   RCTL_T(KC_O)
 
+// include les combos
+#include "g/keymap_combo.h"
 
-
+// fonction pour progarmmer les layouts
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Base Layer: Colemak DH
