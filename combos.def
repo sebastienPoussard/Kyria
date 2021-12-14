@@ -10,5 +10,6 @@ COMB(LUY_U_CIRC,            U_CIRC,              KC_L, KC_U, KC_Y)
 COMB(ARS_A_CIRC,            A_CIRC,              MT_A, MT_R, MT_S)
 COMB(AR_A_GRV,              A_GRV,               MT_A, MT_S)
 COMB(XC_C_CED,              C_CED,               KC_X, KC_C)
+COMB(ABQUOT_TILD,           UD_TLD,              MT_A, UD_GRV)
 
 
