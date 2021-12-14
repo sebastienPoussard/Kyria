@@ -5,4 +5,8 @@ RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 MOUSEKEY_ENABLE = no   # for scrolling up and down
 # enable combos 
 VPATH  +=  keyboards/gboards/
-COMBO_ENABLE=yes
+COMBO_ENABLE = yes
+# optimisation of firmware space
+NO_USB_STARTUP_CHECK = yes
+
+

@@ -42,3 +42,4 @@
 // Combos
 #define COMBO_VARIABLE_LEN 
 #define COMBO_TERM 30
+// gagner de la place pour le firmware

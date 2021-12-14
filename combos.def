@@ -1,2 +1,13 @@
 // Symbols
 COMB(PLOVER_RET,            KC_ENT,              MT_N, MT_T)
+COMB(EI_E_ACUTE,            E_ACUTE,             MT_E, MT_I)
+COMB(EN_E_GRAVE,            E_GRV,               MT_E, MT_N)
+COMB(NEI_E_CIRC,            E_CIRC,              MT_N, MT_E, MT_I)
+COMB(EIO_I_CIRC,            I_CIRC,              MT_E, MT_I, MT_O)
+COMB(EO_O_CIRC,             O_CIRC,              MT_E, MT_O)
+COMB(LUY_U_CIRC,            U_CIRC,              KC_L, KC_U, KC_Y)
+COMB(ARS_A_CIRC,            A_CIRC,              MT_A, MT_R, MT_S)
+COMB(AR_A_GRV,              A_GRV,               MT_A, MT_S)
+COMB(XC_C_CED,              C_CED,               KC_X, KC_C)
+
+
