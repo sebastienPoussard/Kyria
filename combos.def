@@ -1,5 +1,6 @@
 // Symbols
 COMB(PLOVER_RET,            KC_ENT,              MT_N, MT_T)
+COMB(STOVER_RET,            KC_ENT,              MT_S, MT_T)
 COMB(EI_E_ACUTE,            E_ACUTE,             MT_E, MT_I)
 COMB(EN_E_GRAVE,            E_GRV,               MT_E, MT_N)
 COMB(NEI_E_CIRC,            E_CIRC,              MT_N, MT_E, MT_I)
