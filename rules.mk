@@ -9,4 +9,5 @@ COMBO_ENABLE = yes
 # optimisation of firmware space
 NO_USB_STARTUP_CHECK = yes
 
+SWAP_HANDS_ENABLE= no 
 
