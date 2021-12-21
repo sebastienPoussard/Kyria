@@ -40,6 +40,9 @@ bool oled_task_user(void) {
             case _SYMBOLS:
                 oled_write_P(PSTR("Symbols\n"), false);
                 break;
+            case _MEDIA:
+                oled_write_P(PSTR("Media\n"), false);
+                break;
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
         }
